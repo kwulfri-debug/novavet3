@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>novaVet | Veterinaria San Francisco de Asís</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="login-view" class="nv-login-screen">
+    <!-- Barra superior corporativa -->
+    <header class="nv-topbar">
+      <div class="nv-topbar-inner">
+        <div class="nv-top-brand">
+          <span class="nv-paw" aria-hidden="true">🐾</span>
+          <span class="nv-divider">|</span>
+          <span class="nv-brand-spaced">N O V A V E T</span>
+        </div>
+        <span class="nv-top-paw" aria-hidden="true">🐾</span>
+      </div>
+    </header>
+
+    <!-- Contenido principal del login -->
+    <main class="nv-main-container">
+      <!-- Tarjeta roja lateral izquierda -->
+      <aside class="nv-left-card">
+        <div class="nv-silhouettes" aria-hidden="true">
+          <span class="nv-sil-dog">🐕</span>
+          <span class="nv-sil-vet">🩺</span>
+          <span class="nv-sil-cat">🐈</span>
+        </div>
+
+        <h1 class="nv-clinic-title">
+          VETERINARIA SAN<br />
+          FRANCISCO DE<br />
+          ASÍS
+        </h1>
+
+        <div class="nv-ornament"><span>─── 🐾 ───</span></div>
+
+        <p class="nv-motto">“Cuidado y bienestar para tu mascota”</p>
+
+        <p class="nv-exclusive-text">
+          Espacio exclusivo para el dueño y personal autorizado de la veterinaria.
+        </p>
+
+        <div class="nv-ornament"><span>─── 🐾 ───</span></div>
+
+        <footer class="nv-left-footer">
+          <span>🛡️ novaVet · Acceso interno</span>
+          <span>|</span>
+          <span>🔒 Privado</span>
+        </footer>
+      </aside>
+
+      <!-- Columna derecha: acceso y selección de rol -->
+      <section class="nv-right-panel">
+        <div class="nv-pill-badge">
+          <span>🔒</span>
+          <span>Acceso exclusivo del equipo</span>
+        </div>
+
+        <h2 class="nv-heading">Ingresar a novaVet</h2>
+        <p class="nv-subcopy">
+          Usa una cuenta asignada por el dueño. No hay registro público.
+        </p>
+
+        <!-- Selector de roles con contraseña por sección -->
+        <div class="nv-role-grid" id="role-tabs">
+          <button type="button" class="nv-role-card active" data-role="ADMIN" aria-pressed="true">
+            <span class="nv-role-icon" aria-hidden="true">⚙️</span>
+            <strong class="nv-role-title">DUEÑO /<br />ADMINISTRADOR</strong>
+            <span class="nv-role-desc">Control total y reportes</span>
+          </button>
+
+          <button type="button" class="nv-role-card" data-role="VET" aria-pressed="false">
+            <span class="nv-role-icon" aria-hidden="true">👨‍⚕️</span>
+            <strong class="nv-role-title">VETERINARIO</strong>
+            <span class="nv-role-desc">Atención clínica</span>
+          </button>
+
+          <button type="button" class="nv-role-card" data-role="RECEP" aria-pressed="false">
+            <span class="nv-role-icon" aria-hidden="true">🔔</span>
+            <strong class="nv-role-title">RECEPCIÓN</strong>
+            <span class="nv-role-desc">Agenda y admisión</span>
+          </button>
+        </div>
+        <p id="role-section-hint" class="nv-subcopy" aria-live="polite"></p>
+        <div id="login-alert" class="alert-banner hidden" role="status" aria-live="polite" style="width:100%; margin-bottom:4px;"></div>
+
+        <!-- Formulario de correo y contraseña -->
+        <form id="login-form" class="nv-form">
+          <div class="nv-fields-row">
+            <label class="nv-field">
+              <span class="nv-field-label">✉️ CORREO</span>
+              <div class="nv-input-wrap">
+                <span class="nv-input-icon" aria-hidden="true">✉️</span>
+                <input
+                  type="email"
+                  id="login-email"
+                  placeholder="correo@sanfrancisco.vet"
+                  required
+                />
+              </div>
+            </label>
+
+            <label class="nv-field">
+              <span class="nv-field-label">🔒 CONTRASEÑA</span>
+              <div class="nv-input-wrap">
+                <span class="nv-input-icon" aria-hidden="true">🔒</span>
+                <input
+                  type="password"
+                  id="login-password"
+                  placeholder="••••••••"
+                  required
+                />
+              </div>
+            </label>
+          </div>
+
+          <button type="submit" class="nv-submit-btn">
+            Ingresar al sistema <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <p class="nv-technical-note">
+          <span>──</span>
+          <span id="tech-storage-note">Nota técnica: Base de datos híbrida (SQLite local cuando hay servidor Python, o IndexedDB en GitHub Pages / navegador).</span>
+          <span>──</span>
+        </p>
+      </section>
+    </main>
+
+    <!-- Huella decorativa inferior derecha -->
+    <div class="nv-bg-paw-bottom" aria-hidden="true">🐾</div>
+  </section>
+
+  <!-- Contenedor de la aplicación interna (se muestra al iniciar sesión) -->
+  <div id="app-shell" class="app-shell hidden">
+    <header class="app-topbar">
+      <a class="app-brand" href="#" aria-label="novaVet, inicio">
+        <span aria-hidden="true">🐾</span>
+        <span>NOVAVET</span>
+      </a>
+      <div class="app-session">
+        <span id="active-role-tag" class="active-role-tag"></span>
+        <div id="session-user" class="session-user"></div>
+        <button id="logout-btn" class="btn-outline app-logout" type="button">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+      <aside class="app-sidebar">
+        <p class="app-sidebar-label">MENÚ PRINCIPAL</p>
+        <nav id="nav-menu" class="nav-menu" aria-label="Navegación principal"></nav>
+      </aside>
+
+      <main class="app-main">
+        <div id="alert-banner" class="alert-banner hidden" role="status" aria-live="polite"></div>
+        <header class="app-page-header">
+          <p class="app-page-eyebrow">VETERINARIA SAN FRANCISCO DE ASÍS</p>
+          <h1 id="view-title"></h1>
+        </header>
+        <div id="content-area" class="content-area"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
